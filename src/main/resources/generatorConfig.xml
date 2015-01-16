@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+	<properties resource="mybatis.properties" />
+
+	<classPathEntry location="${jdbc.path}" />
+
+	<context id="MyBatisContext" targetRuntime="MyBatis3" defaultModelType="conditional">
+
+		<property name="javaFileEncoding" value="${mybatis.javaFileEncoding}" />
+
+		<!-- 初始化方法插件. -->
+		<plugin type="org.lop.modules.repository.mybatis.generator.plugins.InitPlugin" />
+		<!-- 继承类插件. -->
+		<plugin type="org.lop.modules.repository.mybatis.generator.plugins.SuperclassPlugin" />
+		<!-- 格式化命名插件. -->
+		<plugin type="org.lop.modules.repository.mybatis.generator.plugins.ClassNamePlugin" />
+
+		<commentGenerator type="org.lop.modules.repository.mybatis.generator.internal.CommentGenerator">
+			<property name="suppressAllComments" value="${mybatis.suppressAllComments}" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<!-- DB Config. -->
+		<jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}"
+			password="${jdbc.password}" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+			<property name="trimStrings" value="true" />
+		</javaTypeResolver>
+
+		<!-- Model Config. -->
+		<javaModelGenerator targetPackage="${mybatis.model.package}" targetProject="${mybatis.project}">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- Sql Mapping Config. -->
+		<sqlMapGenerator targetPackage="${mybatis.mapping.package}" targetProject="${mybatis.project}">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- DAO Config. -->
+		<javaClientGenerator targetPackage="${mybatis.dao.package}" targetProject="${mybatis.project}"
+			type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- Table Config. -->
+		<table schema="" tableName="PLM_REGISTER_CODE" domainObjectName="RegisterCode" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="ID" sqlStatement="MySql" identity="true" />
+		</table>
+		<!-- <table schema="" tableName="MNT_GOODS" domainObjectName="Goods" enableCountByExample="false" -->
+		<!-- enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" -->
+		<!-- enableDeleteByPrimaryKey="false"> -->
+		<!-- <generatedKey column="ID" sqlStatement="MySql" identity="true" /> -->
+		<!-- </table> -->
+
+	</context>
+
+</generatorConfiguration>
